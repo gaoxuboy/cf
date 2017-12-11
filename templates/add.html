@@ -1,0 +1,79 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{% static 'bootstrap/js/jquery-3.2.1.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+{#</head>#}
+{#<body>#}
+{#<form action="/add/" method="post">#}
+{#    <p>书名：<input type="text" name="title"></p>#}
+{#    <p>价格：<input type="text" name="price"></p>#}
+{#    <p>出版社日期：<input type="date" name="pubDate"></p>#}
+{#    <p>出版社：#}
+{#        <select name="publisher" id="">#}
+{#              {% for publish_obj in publishList %}#}
+{#                  <option value="{{ publish_obj.id }}">{{ publish_obj.name }}</option>#}
+{#              {% endfor %}#}
+{##}
+{#        </select>#}
+{#    </p>#}
+{#    <p>作者：#}
+{#        <select name="authorlist" id="" multiple size="3">#}
+{#              {% for author_obj in authorList %}#}
+{##}
+{#                  <option value="{{ author_obj.id }}">{{ author_obj.name }}</option>#}
+{##}
+{#              {% endfor %}#}
+{##}
+{#        </select>#}
+{#    </p>#}
+{##}
+{#     <p><input type="submit"></p>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 ">
+         <form action="/add/" method="post">
+                <div class="form-group">
+                    <label for="title">书名</label>
+                    <input type="text" class="form-control" id="title" name="title">
+                </div>
+                <div class="'form-group">
+                    <label for="price">价格</label>
+                    <input type="text" class="form-control" id="price" name="price">
+                </div>
+                <div class="'form-group">
+                    <label for="pubDate">出版社日期</label>
+                    <input type="date" class="form-control" id="pubDate" name="pubDate">
+                </div>
+                <div class="form-group">
+                    <label for="publisher">出版社</label>
+                    <select class="form-control publisher id=" publisher" name="publisher">
+                    {% for publish_obj in publishList %}
+                        <option value="{{ publish_obj.id }}">{{ publish_obj.name }}</option>
+                    {% endfor %}
+                </div>
+                    </select>
+                    <div class="form-group">
+                        <label for="authorlist">作者</label>
+                     <select class="form-control authorlish" name="authorlist" id="authorlist" multiple size="3">
+                            {% for author_obj in authorList %}
+                                <option value="{{ author_obj.id }}">{{ author_obj.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-info save">
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+

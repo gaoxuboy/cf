@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{% static 'bootstrap/js/jquery-3.2.1.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+</head>
+<body>
+<style>
+    span{
+        color: red;
+    }
+</style>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-signin" action="/login/" method="post">
+                <h2 class="form-signin-heading">登录页面</h2>
+                <span>{{ info }}</span>
+                <label for="inputEmail" class="sr-only">姓名</label>
+                <p>姓名<input type="text" id="inputEmail" class="form-control" name="user" required="" autofocus=""></p>
+                <label for="inputPassword" class="sr-only">密码</label>
+                <p>密码<input type="password" id="inputPassword" class="form-control" name="pwd" required=""></p>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+                     </div>
+
+
+            </form>
+            <a href="/reg/"><button  class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+
+
+
+{#            <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>#}
+
+        </div>
+    </div>
+
+
+</div> <!-- /container -->
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+{#<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>#}
+
+
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,106 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{% static 'bootstrap/js/jquery-3.2.1.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">欢迎光临 : {{ request.user }}<span class="sr-only">(current)</span></a></li>
+                <li><a href="/logout/">注销</a></li>
+                <li class="dropdown">
+                    <a href="/setPwd/">修改密码 </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+{#                <li><a href="#">注册</a></li>#}
+{#                <li><a href="#">登录</a></li>#}
+
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">图书管理系统</h4>
+        </div>
+        <div class="part">
+            <a href="/index/">
+                <button type="button" data-toggle="modal" class="btn btn-info  add_book " data-target="#my-modal">增加</button>
+            </a>
+        </div>
+
+        <div class="my-table-tool pull-right">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="my-table-search"></label>
+                    <input type="text" class="form-control" id="my-table-search" placeholder="搜索条件">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+        </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+{#            <a href="/add/"><button class="btn btn-primary">添加</button></a>#}
+            <table class="table table-bordered">
+                <tr>
+                    <th>编号</th>
+                    <th>书名</th>
+                    <th>价格</th>
+                    <th>出版日期</th>
+                    <th>作者</th>
+                    <th>出版社</th>
+                    <th>操作</th>
+                </tr>
+
+                 {% for book_obj in all_book_list %}
+                     <tr>
+                       <td>{{ forloop.counter }}</td>
+                       <td>{{ book_obj.title }}</td>
+                       <td>{{ book_obj.price }}</td>
+                       <td>{{ book_obj.publishDate|date:"Y-m-d" }}</td>
+                       <td>{% for author in book_obj.authorlist.all %}
+                             {{ author.name }}
+                            {% endfor %}
+                       </td>
+                       <td>{{ book_obj.publish.name }}</td>
+                       <td>
+                           <a href="/delet/{{ book_obj.id }}/"><button class="btn btn-danger">删除</button></a>
+                           <a href="/edit/{{ book_obj.id }}/"><button class="btn btn-success">编辑</button></a>
+                       </td>
+                    </tr>
+
+                 {% endfor %}
+                 
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

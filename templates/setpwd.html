@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="{% static 'bootstrap/js/jquery-3.2.1.js' %}"></script>
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+<script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-signin" action="/setPwd/" method="post">
+                <h3 class="form-signin-heading">修改密码</h3>
+                <span>{{ info }}</span>
+                <label for="inputEmail" class="sr-only">姓名</label>
+                <p>姓名<input type="text" id="inputEmail" class="form-control" name="user" required="" autofocus=""></p>
+                <label for="inputPassword" class="sr-only">密码</label>
+                <p>旧密码<input type="password" id="inputPassword" class="form-control" name="old_pwd" required=""></p>
+                <div class="checkbox">
+                    <p>新密码<input type="password" id="inputPassword" class="form-control" name="new_pwd" required=""></p>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+                </div>
+            </form>
+                    <a href="/reg/"><button  class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+
+
+
+
+{#                <h4>修改密码</h4>#}
+{#                <form action="/setPwd/" method="post">#}
+{#                    {% csrf_token %}#}
+{#                    <p>用户名<input type="username" name="pwd"></p>#}
+{#                    <p>旧密码 <input type="password" name="old_pwd"></p>#}
+{#                    <p>新密码 <input type="password" name="new_pwd"></p>#}
+{#                    <input type="submit"><a href="/reg/"><input type="button" value="注册"></a>#}
+{#                </form>#}
+{#                <p>{{ info }}</p>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
